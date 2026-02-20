@@ -5,19 +5,19 @@ public class Produit {
     private String marque;
     private double prix;
     private String categorie;
-    private double remise; // 0.1 = 10%
+    private double remise;
 
-    // Constructeur
+    // Constructeur avec paramètres
     public Produit(String marque, double prix, String categorie) {
         this.marque = marque;
         this.prix = prix;
         this.categorie = categorie;
 
-        // تحديد remise حسب الثمن
+        // remise 0.2 ila prix > 500 sinon 0.1
         if (prix > 500) {
-            this.remise = 0.2; // 20%
+            this.remise = 0.2;
         } else {
-            this.remise = 0.1; // 10%
+            this.remise = 0.1;
         }
     }
 
@@ -38,17 +38,37 @@ public class Produit {
         return remise;
     }
 
-    // Calcul prix avec remise
-    public double calculerPrixAvecRemise() {
-        return prix - (prix * remise);
+    // Setters
+    public void setMarque(String marque) {
+        this.marque = marque;
     }
 
-    // Affichage
-    public void afficherDetail() {
-        System.out.println("Marque : " + marque);
-        System.out.println("Categorie : " + categorie);
-        System.out.println("Prix initial : " + prix);
-        System.out.println("Remise : " + (remise * 100) + "%");
-        System.out.println("Prix final : " + calculerPrixAvecRemise());
+    public void setPrix(double prix) {
+        this.prix = prix;
+
+        // update remise ila تبدل الثمن
+        if (prix > 500) {
+            this.remise = 0.2;
+        } else {
+            this.remise = 0.1;
+        }
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
+    // afficher détails
+    public void afficherDetails() {
+        System.out.println("Marque: " + marque);
+        System.out.println("Prix: " + prix);
+        System.out.println("Categorie: " + categorie);
+        System.out.println("Remise: " + remise);
+        System.out.println("---------------------------");
+    }
+
+    // prix après remise
+    public double prixRemise() {
+        return prix * (1 - remise);
     }
 }
