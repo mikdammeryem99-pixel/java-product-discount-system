@@ -46,7 +46,7 @@ public class Produit {
     public void setPrix(double prix) {
         this.prix = prix;
 
-        // update remise ila تبدل الثمن
+        // update remise
         if (prix > 500) {
             this.remise = 0.2;
         } else {
